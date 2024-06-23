@@ -1,7 +1,7 @@
 #ifndef EXAMPLE_SUDOKUS_H
 #define EXAMPLE_SUDOKUS_H
 
-char easy1[9][9] = {
+unsigned short int easy1[9][9] = {
     {0, 0, 0, 2, 6, 0, 7, 0, 1}, 
     {6, 8, 0, 0, 7, 0, 0, 9, 0}, 
     {1, 9, 0, 0, 0, 4, 5, 0, 0}, 
@@ -13,7 +13,7 @@ char easy1[9][9] = {
     {7, 0, 3, 0, 1, 8, 0, 0, 0}
 };
 
-char easy1_sol[9][9] = {
+unsigned short int easy1_sol[9][9] = {
     {4, 3, 5, 2, 6, 9, 7, 8, 1}, 
     {6, 8, 2, 5, 7, 1, 4, 9, 3}, 
     {1, 9, 7, 8, 3, 4, 5, 6, 2}, 

@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include "example_sudokus.h"
 
-char sudoku_board[9][9] = {
+unsigned short int sudoku_board[9][9] = {
     {0,0,0,0,0,0,0,0,0},
     {0,0,0,0,0,0,0,0,0},
     {0,0,0,0,0,0,0,0,0},
