@@ -10,5 +10,6 @@ __________
 Tasks:
 [~] Implement first solving algorithm
 [ ] Add testing with example sudokus and known solution that run together with compilation
+[ ] Print border with bold typeface around the 9-squares
 [x] Add one test sudoku with solution
 [x] Be able to print a sudoku board
