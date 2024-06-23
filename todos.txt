@@ -1,0 +1,12 @@
+TODO List Legend:
+[ ] Not started
+[~] In progress
+[x] Done
+[-] Abandoned
+[>] Postponed
+
+__________
+
+Tasks:
+[~] Implement first solving algorithm
+[ ] Add testing with example sudokus and known solution that run together with compilation
