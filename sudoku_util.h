@@ -35,4 +35,4 @@ void print_sudoku(unsigned short int board[9][9]) {
     printf("+---+---+---+---+---+---+---+---+---+\n");
 }
 
-#endif
+#endif // SUDOKU_UTIL_H
