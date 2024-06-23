@@ -1,6 +1,8 @@
 #ifndef EXAMPLE_SUDOKUS_H
 #define EXAMPLE_SUDOKUS_H
 
+// Source: https://sandiway.arizona.edu/sudoku/examples.html
+
 unsigned short int easy1[9][9] = {
     {0, 0, 0, 2, 6, 0, 7, 0, 1}, 
     {6, 8, 0, 0, 7, 0, 0, 9, 0}, 
