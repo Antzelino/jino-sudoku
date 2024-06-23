@@ -19,6 +19,6 @@ void print_sudoku(unsigned short int board[9][9]);
 int main(int argc, char const *argv[])
 {
     printf("hello, sudoku\n");
-    print_sudoku(easy1_sol);
+    print_sudoku(easy1);
     return 0;
 }
