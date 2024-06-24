@@ -9,7 +9,8 @@ __________
 
 Tasks:
 [~] Implement first solving algorithm
-[ ] Add testing with example sudokus and known solution that run together with compilation
+[ ] Add testing with example sudokus and known solution that can run via makefile
+[ ] Use other ascii characters to print sudoku borders between the numbers
 [ ] Print border with bold typeface around the 9-squares
 [x] Add one test sudoku with solution
 [x] Be able to print a sudoku board
