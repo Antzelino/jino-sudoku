@@ -47,10 +47,10 @@ void clear_number_from_9box(unsigned short int n, unsigned short int i, unsigned
     j_start = (j / 3) * 3;
     j_end = j_start + 2;
     
-    assert(i_start == 0 || i_start == 3 || i_start == 6 && "Calculation for indices in 9box are wrong");
-    assert(j_start == 0 || j_start == 3 || j_start == 6 && "Calculation for indices in 9box are wrong");
-    assert(i_end == 2 || i_end == 5 || i_end == 8 && "Calculation for indices in 9box are wrong");
-    assert(j_end == 2 || j_end == 5 || j_end == 8 && "Calculation for indices in 9box are wrong");
+    assert((i_start == 0 || i_start == 3 || i_start == 6) && "Calculation for indices in 9box are wrong");
+    assert((j_start == 0 || j_start == 3 || j_start == 6) && "Calculation for indices in 9box are wrong");
+    assert((i_end == 2 || i_end == 5 || i_end == 8) && "Calculation for indices in 9box are wrong");
+    assert((j_end == 2 || j_end == 5 || j_end == 8) && "Calculation for indices in 9box are wrong");
 
     for (size_t i_ = i_start; i_ <= i_end; i_++)
     {
