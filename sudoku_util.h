@@ -3,29 +3,64 @@
 
 #include <stdio.h>
 
-void print_sudoku(unsigned short int board[9][9]) {
+static void print_top_line_bold() {
+    printf("╔═══╤═══╤═══╦═══╤═══╤═══╦═══╤═══╤═══╗\n");
+}
+
+static void print_middle_line_bold()
+{
+    printf("╠═══╪═══╪═══╬═══╪═══╪═══╬═══╪═══╪═══╣░\n");
+}
+
+static void print_middle_line_light()
+{
+    printf("╟───┼───┼───╫───┼───┼───╫───┼───┼───╢░\n");
+}
+
+static void print_bottom_line_bold()
+{
+    printf("╚═══╧═══╧═══╩═══╧═══╧═══╩═══╧═══╧═══╝░\n");
+    printf(" ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n");
+}
+
+static void print_board_cell_value(unsigned short int value) {
+    if (value == 0)
+    {
+        printf("  ");
+    }
+    else 
+    {
+        printf("%hu ", value);
+    }
+}
+
+static void validate_board_values(unsigned short int board[9][9]) {
     for (size_t i = 0; i < 9; i++)
     {
         for (size_t j = 0; j < 9; j++)
         {
-            if(board[i][j] > 9) {
-                fprintf(stderr, "INVALID: Sudoku contains invalid value \'%hu\' at [%zu][%zu]. Cannot print board.\n", board[i][j], i, j);
-                return;
-            }
+            assert(board[i][j] <= 9 && "Invalid value in sudoku board, cannot print");
         }
     }
+}
+
+static void print_sudoku(unsigned short int board[9][9])
+{
+    validate_board_values(board);
 
     for (size_t i = 0; i < 9; i++)
     {
         if (i == 0)
         {
-            printf("╔═══╤═══╤═══╦═══╤═══╤═══╦═══╤═══╤═══╗\n");
+            print_top_line_bold();
         }
-        else if (i % 3 == 0) {
-            printf("╠═══╪═══╪═══╬═══╪═══╪═══╬═══╪═══╪═══╣░\n");
+        else if (i % 3 == 0)
+        {
+            print_middle_line_bold();
         }
-        else {
-            printf("╟───┼───┼───╫───┼───┼───╫───┼───┼───╢░\n");
+        else
+        {
+            print_middle_line_light();
         }
         for (size_t j = 0; j < 9; j++)
         {
@@ -33,23 +68,16 @@ void print_sudoku(unsigned short int board[9][9]) {
             {
                 printf("║ ");
             }
-            else {
+            else
+            {
                 printf("│ ");
             }
 
-            if (board[i][j] == 0)
-            {
-                printf("  ");
-            }
-            else 
-            {
-                printf("%hu ", board[i][j]);
-            }
+            print_board_cell_value(board[i][j]);
         }
         printf("║░\n");
     }
-    printf("╚═══╧═══╧═══╩═══╧═══╧═══╩═══╧═══╧═══╝░\n");
-    printf(" ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n");
+    print_bottom_line_bold();
 }
 
 #endif // SUDOKU_UTIL_H
