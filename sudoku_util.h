@@ -17,21 +17,38 @@ void print_sudoku(unsigned short int board[9][9]) {
 
     for (size_t i = 0; i < 9; i++)
     {
-        printf("+---+---+---+---+---+---+---+---+---+\n");
+        if (i == 0)
+        {
+            printf("▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄\n");
+        }
+        else if (i % 3 == 0) {
+            printf("█████████████████████████████████████\n");
+        }
+        else {
+            printf("█───┼───┼───█───┼───┼───█───┼───┼───█\n");
+        }
         for (size_t j = 0; j < 9; j++)
         {
+            if (j % 3 == 0)
+            {
+                printf("█ ");
+            }
+            else {
+                printf("│ ");
+            }
+
             if (board[i][j] == 0)
             {
-                printf("|   ");
+                printf("  ");
             }
             else 
             {
-                printf("| %hu ", board[i][j]);
+                printf("%hu ", board[i][j]);
             }
         }
-        printf("|\n");
+        printf("█\n");
     }
-    printf("+---+---+---+---+---+---+---+---+---+\n");
+    printf("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀\n");
 }
 
 #endif // SUDOKU_UTIL_H

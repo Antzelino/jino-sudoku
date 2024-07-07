@@ -8,8 +8,7 @@ TODO List Legend:
 __________
 
 Tasks:
-[ ] Refactor project to separate functionalities and make sense of code
-[ ] Add more assertions to prevent bugs
+[~] Refactor project to separate functionalities and make sense of code
 [ ] Figure out a way to see why a board was still unsolved
 [ ] Add testing with example sudokus and known solution that can run via makefile
 [ ] Consider CUnit Testing Framework for tests
@@ -19,3 +18,4 @@ Tasks:
 [x] Add one test sudoku with solution
 [x] Be able to print a sudoku board
 [x] Implement first solving algorithm
+[x] Add more assertions to prevent bugs
