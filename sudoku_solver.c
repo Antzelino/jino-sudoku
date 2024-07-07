@@ -32,8 +32,8 @@ void set_only_possible_number_in_cell(unsigned short int n, unsigned short int i
     {
         if (n_ == n-1)
         {
-            assert(possible_values[i][j].values[n_] != 0);
-            assert(possible_values[i][j].values[n_] == n);
+            assert(possible_values[i][j].values[n_] != 0 && "Cell should have value, not 0");
+            assert(possible_values[i][j].values[n_] == n && "Cell has wrong value in index");
             continue;
         }
         possible_values[i][j].values[n_] = 0;
@@ -47,10 +47,10 @@ void clear_number_from_9box(unsigned short int n, unsigned short int i, unsigned
     j_start = (j / 3) * 3;
     j_end = j_start + 2;
     
-    assert(i_start == 0 || i_start == 3 || i_start == 6);
-    assert(j_start == 0 || j_start == 3 || j_start == 6);
-    assert(i_end == 2 || i_end == 5 || i_end == 8);
-    assert(j_end == 2 || j_end == 5 || j_end == 8);
+    assert(i_start == 0 || i_start == 3 || i_start == 6 && "Calculation for indices in 9box are wrong");
+    assert(j_start == 0 || j_start == 3 || j_start == 6 && "Calculation for indices in 9box are wrong");
+    assert(i_end == 2 || i_end == 5 || i_end == 8 && "Calculation for indices in 9box are wrong");
+    assert(j_end == 2 || j_end == 5 || j_end == 8 && "Calculation for indices in 9box are wrong");
 
     for (size_t i_ = i_start; i_ <= i_end; i_++)
     {
@@ -58,8 +58,8 @@ void clear_number_from_9box(unsigned short int n, unsigned short int i, unsigned
         {
             if (i == i_ && j == j_)
             {
-                assert(possible_values[i][j].values[n-1] != 0);
-                assert(possible_values[i][j].values[n-1] == n);
+                assert(possible_values[i][j].values[n-1] != 0 && "Cell should have value, not 0");
+                assert(possible_values[i][j].values[n-1] == n && "Cell has wrong value in index");
                 continue;
             }
             possible_values[i_][j_].values[n-1] = 0;
@@ -72,8 +72,8 @@ void clear_number_from_column(unsigned short int n, unsigned short int i, unsign
     {
         if (i_ == i)
         {            
-            assert(possible_values[i][j].values[n-1] != 0);
-            assert(possible_values[i][j].values[n-1] == n);
+            assert(possible_values[i][j].values[n-1] != 0 && "Cell should have value, not 0");
+            assert(possible_values[i][j].values[n-1] == n && "Cell has wrong value in index");
             continue;
         }
         possible_values[i_][j].values[n-1] = 0;
@@ -85,8 +85,8 @@ void clear_number_from_row(unsigned short int n, unsigned short int i, unsigned 
     {
         if (j_ == j)
         {
-            assert(possible_values[i][j].values[n-1] != 0);
-            assert(possible_values[i][j].values[n-1] == n);
+            assert(possible_values[i][j].values[n-1] != 0 && "Cell should have value, not 0");
+            assert(possible_values[i][j].values[n-1] == n && "Cell has wrong value in index");
             continue;
         }
         possible_values[i][j_].values[n-1] = 0;
@@ -94,7 +94,7 @@ void clear_number_from_row(unsigned short int n, unsigned short int i, unsigned 
 }
 
 void handle_number_in_cell(unsigned short int n, unsigned short int i, unsigned short int j) {
-    assert(n != 0);
+    assert(n != 0 && "Must not set number in cell to 0");
     clear_number_from_row(n, i, j);
     clear_number_from_column(n, i, j);
     clear_number_from_9box(n, i, j);
