@@ -9,9 +9,9 @@ __________
 
 Tasks:
 [~] Refactor project to separate functionalities and make sense of code
-[ ] Figure out a way to see why a board wouldn't be solved after a run of the algorithm
+[ ] Have a way to understand why a board wouldn't be solved after a run of the algorithm (print to some log file or something to see results or debug the run etc.)
 [ ] Add testing with example sudokus and known solution that can run via makefile
-[ ] Consider CUnit Testing Framework for tests
+[ ] CUnit Testing Framework for tests
 [ ] Implement improved algorithm
 [x] Use other ascii characters to print sudoku borders between the numbers
 [x] Print border with bold typeface around the 9-squares
