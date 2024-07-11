@@ -7,8 +7,6 @@
 
 unsigned short int sudoku_board[9][9] = {0};
 
-void print_sudoku(unsigned short int board[9][9]);
-
 int main(int argc, char const *argv[])
 {
     assert(argc == 1 && "Not supported command line arguments");

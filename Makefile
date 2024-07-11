@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c99
 DEPS = example_sudokus.h sudoku_util.h sudoku_solver.h
-OBJ = main.o sudoku_solver.o
+OBJ = main.o sudoku_solver.o sudoku_util.o
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
