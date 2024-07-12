@@ -8,14 +8,14 @@ TODO List Legend:
 __________
 
 Tasks:
-[~] Refactor project to separate functionalities and make sense of code
-[ ] Have a way to understand why a board wouldn't be solved after a run of the algorithm (print to some log file or something to see results or debug the run etc.)
+[~] Have a way to understand why a board wouldn't be solved after a run of the algorithm (print to some log file or something to see results or debug the run etc.)
+[ ] Implement improved algorithm
 [ ] Add testing with example sudokus and known solution that can run via makefile
 [ ] CUnit Testing Framework for tests
-[ ] Implement improved algorithm
 [x] Use other ascii characters to print sudoku borders between the numbers
 [x] Print border with bold typeface around the 9-squares
 [x] Add one test sudoku with solution
 [x] Be able to print a sudoku board
 [x] Implement first solving algorithm
 [x] Add more assertions to prevent bugs
+[x] Refactor project to separate functionalities and make sense of code
