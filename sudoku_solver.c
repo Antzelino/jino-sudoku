@@ -40,7 +40,7 @@ void set_only_possible_number_in_cell(unsigned short int n, unsigned short int i
     }
 }
 
-void clear_number_from_9box(unsigned short int n, unsigned short int i, unsigned short int j) {
+void clear_number_from_3x3(unsigned short int n, unsigned short int i, unsigned short int j) {
     unsigned short int i_start, i_end, j_start, j_end;
     i_start = (i / 3) * 3;
     i_end = i_start + 2;
@@ -97,7 +97,7 @@ void handle_number_in_cell(unsigned short int n, unsigned short int i, unsigned 
     assert(n != 0 && "Must not set number in cell to 0");
     clear_number_from_row(n, i, j);
     clear_number_from_column(n, i, j);
-    clear_number_from_9box(n, i, j);
+    clear_number_from_3x3(n, i, j);
     set_only_possible_number_in_cell(n, i, j);
 }
 
