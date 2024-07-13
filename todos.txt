@@ -8,7 +8,8 @@ TODO List Legend:
 __________
 
 Tasks:
-[~] Add testing with example sudokus and known solution that can run via makefile
+[~] Improve simple algo by going through each row+column+3x3 and each value if it can only be in one cell to set it
+[>] Add testing with example sudokus and known solution that can run via makefile
 [ ] Implement improved algorithm
 [ ] CUnit Testing Framework for tests
 [-] Have a way to understand why a board wouldn't be solved after a run of the algorithm (print to some log file or something to see results or debug the run etc.)
