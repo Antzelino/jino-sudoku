@@ -8,18 +8,18 @@ static void print_top_line_bold() {
 
 static void print_middle_line_bold()
 {
-    printf("┣━━━┿━━━┿━━━╋━━━┿━━━┿━━━╋━━━┿━━━┿━━━┫░\n");
+    printf("┣━━━┿━━━┿━━━╋━━━┿━━━┿━━━╋━━━┿━━━┿━━━┫\n");
 }
 
 static void print_middle_line_light()
 {
-    printf("┠┈┈┈┼┈┈┈┼┈┈┈╂┈┈┈┼┈┈┈┼┈┈┈╂┈┈┈┼┈┈┈┼┈┈┈┨░\n");
+    printf("┠┈┈┈┼┈┈┈┼┈┈┈╂┈┈┈┼┈┈┈┼┈┈┈╂┈┈┈┼┈┈┈┼┈┈┈┨\n");
 }
 
 static void print_bottom_line_bold()
 {
-    printf("┗━━━┷━━━┷━━━┻━━━┷━━━┷━━━┻━━━┷━━━┷━━━┛░\n");
-    printf(" ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n");
+    printf("┗━━━┷━━━┷━━━┻━━━┷━━━┷━━━┻━━━┷━━━┷━━━┛\n");
+    printf(" \n");
 }
 
 static void print_board_cell_value(unsigned short int value) {
@@ -57,7 +57,7 @@ static void print_line_with_values(unsigned short int board[9][9], size_t i) {
         
         print_board_cell_value(board[i][j]);
     }
-    printf("┃░\n");
+    printf("┃\n");
 }
 
 // -- PUBLIC -- //
