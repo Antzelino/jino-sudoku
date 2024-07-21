@@ -8,7 +8,7 @@ TODO List Legend:
 __________
 
 Tasks:
-[~] Check each row & column & 3x3. If some "possible value" is shown only one time, it can be put there and eliminated adjacently.
+[~] Implement hidden pairs, to be able to go further with sudoku med1
 [>] Add testing with example sudokus and known solution that can run via makefile
 [ ] Implement improved algorithm
 [ ] CUnit Testing Framework for tests
@@ -21,3 +21,4 @@ Tasks:
 [x] Add more assertions to prevent bugs
 [x] Refactor project to separate functionalities and make sense of code
 [x] Implement printing the possible values board when sudoku is not solved, as a debugging helper
+[x] Check each row & column & 3x3. If some "possible value" is shown only one time, it can be put there and eliminated adjacently.
