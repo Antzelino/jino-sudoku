@@ -8,7 +8,7 @@ TODO List Legend:
 __________
 
 Tasks:
-[~] Improve simple algo by going through each row+column+3x3 and each value if it can only be in one cell to set it
+[~] Check each row & column & 3x3. If some "possible value" is shown only one time, it can be put there and eliminated adjacently.
 [>] Add testing with example sudokus and known solution that can run via makefile
 [ ] Implement improved algorithm
 [ ] CUnit Testing Framework for tests
