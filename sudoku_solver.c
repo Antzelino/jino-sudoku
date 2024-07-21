@@ -117,6 +117,9 @@ int only_one_possible_value_in_cell(unsigned short int i, unsigned short int j) 
     return possible_value;
 }
 
+/*
+ * Return 0 if is not fully solved, >0 otherwise.
+ */
 int is_not_fully_solved(unsigned short int final_board[9][9]) {
     for (size_t i = 0; i < 9; i++)
     {
@@ -211,7 +214,6 @@ void solve_sudoku(unsigned short int input[9][9], unsigned short int output[9][9
         }
     }
 
-    // TODO: if not solved, print possible values in each cell
     if(is_not_fully_solved(output) == 0) {
         printf("Sudoku not solved. Possible values so far:\n");
         print_possible_values_table();
