@@ -12,16 +12,16 @@ int main(int argc, char const *argv[])
     assert(argc == 1 && "Not supported command line arguments");
     assert(argv[1] == 0 && "Not supported command line arguments");
 
-    printf("hello, sudoku\n");
+    printf("Trying to solve this sudoku:\n");
     print_sudoku(med1);
     unsigned short int solved[9][9] = {0};
     solve_sudoku(med1, solved);
     sleep(1);
-    printf("\nafter some steps to solve it:\n");
+    printf("\nResult after solve attempt:\n");
     print_sudoku(solved);
     
     sleep(1);
-    printf("\ncompare with real solution:\n");
+    printf("\nCompare with real solution:\n");
     print_sudoku(med1_sol);
     
     return 0;
