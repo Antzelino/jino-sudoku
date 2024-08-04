@@ -9,6 +9,9 @@ __________
 
 Tasks:
 [~] Implement hidden pairs, to be able to go further with sudoku med1
+[ ] Cover with `#if DEBUG` relevant pieces of code, such as loops with assertions
+[ ] Implement hidden candidates, that checks hidden singles, pairs, triplets, etc.
+[ ] Implement naked candidates, that checks naked singles, pairs, triplets, etc.
 [>] Add testing with example sudokus and known solution that can run via makefile
 [ ] Implement improved algorithm
 [ ] CUnit Testing Framework for tests
