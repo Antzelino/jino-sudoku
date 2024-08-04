@@ -44,17 +44,17 @@ void set_candidate_single_value(unsigned short int n, unsigned short int i, unsi
     }
 }
 
-void clear_number_from_3x3(unsigned short int n, unsigned short int i, unsigned short int j) {
+void clear_number_from_block(unsigned short int n, unsigned short int i, unsigned short int j) {
     unsigned short int i_start, i_end, j_start, j_end;
     i_start = (i / 3) * 3;
     i_end = i_start + 2;
     j_start = (j / 3) * 3;
     j_end = j_start + 2;
     
-    assert((i_start == 0 || i_start == 3 || i_start == 6) && "Calculation for indices in 3x3 are wrong");
-    assert((j_start == 0 || j_start == 3 || j_start == 6) && "Calculation for indices in 3x3 are wrong");
-    assert((i_end == 2 || i_end == 5 || i_end == 8) && "Calculation for indices in 3x3 are wrong");
-    assert((j_end == 2 || j_end == 5 || j_end == 8) && "Calculation for indices in 3x3 are wrong");
+    assert((i_start == 0 || i_start == 3 || i_start == 6) && "Calculation for indices in block are wrong");
+    assert((j_start == 0 || j_start == 3 || j_start == 6) && "Calculation for indices in block are wrong");
+    assert((i_end == 2 || i_end == 5 || i_end == 8) && "Calculation for indices in block are wrong");
+    assert((j_end == 2 || j_end == 5 || j_end == 8) && "Calculation for indices in block are wrong");
 
     for (size_t i_ = i_start; i_ <= i_end; i_++)
     {
@@ -101,7 +101,7 @@ void handle_number_in_cell(unsigned short int n, unsigned short int i, unsigned 
     assert(n != 0 && "Must not set number in cell to 0");
     clear_number_from_row(n, i, j);
     clear_number_from_column(n, i, j);
-    clear_number_from_3x3(n, i, j);
+    clear_number_from_block(n, i, j);
     set_candidate_single_value(n, i, j);
 }
 
@@ -170,14 +170,14 @@ void check_hidden_singles() {
             }
         }
     }
-    // Lastly check for each value in each 3x3 box
+    // Lastly check for each value in each block
     for (unsigned short n = 1; n <= 9; n++)
     {
         for (unsigned short box_center_i = 1; box_center_i < 9; box_center_i+=3)
         {
             for (unsigned short box_center_j = 1; box_center_j < 9; box_center_j+=3)
             {
-                unsigned short box3x3_n_count = 0;
+                unsigned short block_n_count = 0;
                 short n_index_i = -1;
                 short n_index_j = -1;
 
@@ -187,20 +187,20 @@ void check_hidden_singles() {
                 j_start = (box_center_j / 3) * 3;
                 j_end = j_start + 2;
 
-                // Iterating the 9 cells in this 3x3 box
+                // Iterating the 9 cells in this block
                 for (unsigned short i_ = i_start; i_ <= i_end; i_++)
                 {
                     for (unsigned short j_ = j_start; j_ <= j_end; j_++)
                     {
                         if (candidates[i_][j_].values[n-1] != 0)
                         {
-                            box3x3_n_count++;
+                            block_n_count++;
                             n_index_i = i_;
                             n_index_j = j_;
                         }
                     }
                 }
-                if (box3x3_n_count == 1) {
+                if (block_n_count == 1) {
                     assert(n_index_i >= 0 && n_index_i < 9 && "Column index not in valid range");
                     assert(n_index_j >= 0 && n_index_j < 9 && "Column index not in valid range");
                     handle_number_in_cell(n, n_index_i, n_index_j);
