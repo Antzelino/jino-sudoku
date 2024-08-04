@@ -7,14 +7,15 @@
 #define SUDOKU_MAX_ITERATIONS 10
 
 /*
- * Notes for a single cell.
- * A cell starts by having 9 possible values (1-9), until only 1 is left, which becomes the number of the cell.
+ * Notes for a single cell
+ * A cell starts by having 9 possible values (1-9), until only 1 is left, which becomes the number of the cell
+ * If `values[n]` is 0 then n+1 is not a possible value in this cell. Otherwise `values[n]` is equal to n+1
  */
 typedef struct Notes {
     unsigned short int values[9];
 } Notes;
 
-// All candidates for all cells of the board (9x9 board), by using one `Notes` per cell of the board.
+// All candidates for all cells of the board (9x9 board), by using one `Notes` per cell of the board
 Notes candidates[9][9];
 
 void init_candidates() {
