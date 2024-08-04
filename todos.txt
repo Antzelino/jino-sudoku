@@ -9,6 +9,7 @@ __________
 
 Tasks:
 [~] Implement hidden pairs, to be able to go further with sudoku med1
+[ ] Consider refactoring and using a new method `remove_candidate_from_cell`
 [ ] Cover with `#if DEBUG` relevant pieces of code, such as loops with assertions
 [ ] Implement hidden candidates, that checks hidden singles, pairs, triplets, etc.
 [ ] Implement naked candidates, that checks naked singles, pairs, triplets, etc.
