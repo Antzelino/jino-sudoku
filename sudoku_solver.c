@@ -7,38 +7,39 @@
 #define SUDOKU_MAX_ITERATIONS 10
 
 /*
- * Each element value from 1 to 9.
- * If 0 means that value is not possible in this cell.
+ * Notes for a single cell.
+ * A cell starts by having 9 possible values (1-9), until only 1 is left, which becomes the number of the cell.
  */
 typedef struct Notes {
     unsigned short int values[9];
 } Notes;
 
-Notes possible_values[9][9];
+// All candidates for all cells of the board (9x9 board), by using one `Notes` per cell of the board.
+Notes candidates[9][9];
 
-void init_possible_values() {
+void init_candidates() {
     for (size_t i = 0; i < 9; i++)
     {
         for (size_t j = 0; j < 9; j++)
         {
             for (size_t k = 0; k < 9; k++)
             {
-                possible_values[i][j].values[k] = k + 1;
+                candidates[i][j].values[k] = k + 1;
             }
         }
     }
 }
 
-void set_only_possible_number_in_cell(unsigned short int n, unsigned short int i, unsigned short int j) {
+void set_candidate_single_value(unsigned short int n, unsigned short int i, unsigned short int j) {
     for (unsigned short int n_ = 0; n_ < 9; n_++)
     {
         if (n_ == n-1)
         {
-            assert(possible_values[i][j].values[n_] != 0 && "Cell should have value, not 0");
-            assert(possible_values[i][j].values[n_] == n && "Cell has wrong value in index");
+            assert(candidates[i][j].values[n_] != 0 && "Cell should have value, not 0");
+            assert(candidates[i][j].values[n_] == n && "Cell has wrong value in index");
             continue;
         }
-        possible_values[i][j].values[n_] = 0;
+        candidates[i][j].values[n_] = 0;
     }
 }
 
@@ -60,11 +61,11 @@ void clear_number_from_3x3(unsigned short int n, unsigned short int i, unsigned 
         {
             if (i == i_ && j == j_)
             {
-                assert(possible_values[i][j].values[n-1] != 0 && "Cell should have value, not 0");
-                assert(possible_values[i][j].values[n-1] == n && "Cell has wrong value in index");
+                assert(candidates[i][j].values[n-1] != 0 && "Cell should have value, not 0");
+                assert(candidates[i][j].values[n-1] == n && "Cell has wrong value in index");
                 continue;
             }
-            possible_values[i_][j_].values[n-1] = 0;
+            candidates[i_][j_].values[n-1] = 0;
         }
     }
 }
@@ -74,11 +75,11 @@ void clear_number_from_column(unsigned short int n, unsigned short int i, unsign
     {
         if (i_ == i)
         {
-            assert(possible_values[i][j].values[n-1] != 0 && "Cell should have value, not 0");
-            assert(possible_values[i][j].values[n-1] == n && "Cell has wrong value in index");
+            assert(candidates[i][j].values[n-1] != 0 && "Cell should have value, not 0");
+            assert(candidates[i][j].values[n-1] == n && "Cell has wrong value in index");
             continue;
         }
-        possible_values[i_][j].values[n-1] = 0;
+        candidates[i_][j].values[n-1] = 0;
     }
 }
 
@@ -87,11 +88,11 @@ void clear_number_from_row(unsigned short int n, unsigned short int i, unsigned 
     {
         if (j_ == j)
         {
-            assert(possible_values[i][j].values[n-1] != 0 && "Cell should have value, not 0");
-            assert(possible_values[i][j].values[n-1] == n && "Cell has wrong value in index");
+            assert(candidates[i][j].values[n-1] != 0 && "Cell should have value, not 0");
+            assert(candidates[i][j].values[n-1] == n && "Cell has wrong value in index");
             continue;
         }
-        possible_values[i][j_].values[n-1] = 0;
+        candidates[i][j_].values[n-1] = 0;
     }
 }
 
@@ -100,7 +101,7 @@ void handle_number_in_cell(unsigned short int n, unsigned short int i, unsigned 
     clear_number_from_row(n, i, j);
     clear_number_from_column(n, i, j);
     clear_number_from_3x3(n, i, j);
-    set_only_possible_number_in_cell(n, i, j);
+    set_candidate_single_value(n, i, j);
 }
 
 int only_one_possible_value_in_cell(unsigned short int i, unsigned short int j) {
@@ -109,9 +110,9 @@ int only_one_possible_value_in_cell(unsigned short int i, unsigned short int j) 
     {
         if (possible_value == 0)
         {
-            possible_value = possible_values[i][j].values[n_];
+            possible_value = candidates[i][j].values[n_];
         }
-        else if (possible_values[i][j].values[n_] != 0)
+        else if (candidates[i][j].values[n_] != 0)
         {
             return 0;
         }
@@ -130,7 +131,7 @@ void check_hidden_singles() {
 
             for (unsigned short j = 0; j < 9; j++)
             {
-                if (possible_values[i][j].values[n-1] != 0)
+                if (candidates[i][j].values[n-1] != 0)
                 {
                     row_n_count++;
                     row_index = j;
@@ -154,7 +155,7 @@ void check_hidden_singles() {
 
             for (unsigned short i = 0; i < 9; i++)
             {
-                if (possible_values[i][j].values[n-1] != 0)
+                if (candidates[i][j].values[n-1] != 0)
                 {
                     column_n_count++;
                     column_index = i;
@@ -190,7 +191,7 @@ void check_hidden_singles() {
                 {
                     for (unsigned short j_ = j_start; j_ <= j_end; j_++)
                     {
-                        if (possible_values[i_][j_].values[n-1] != 0)
+                        if (candidates[i_][j_].values[n-1] != 0)
                         {
                             box3x3_n_count++;
                             n_index_i = i_;
@@ -268,7 +269,7 @@ void print_possible_values_table() {
 }
 
 void solve_sudoku(unsigned short int input[9][9], unsigned short int output[9][9]) {
-    init_possible_values();
+    init_candidates();
     
     for (size_t i = 0; i < 9; i++)
     {
