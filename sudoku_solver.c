@@ -105,20 +105,20 @@ void handle_number_in_cell(unsigned short int n, unsigned short int i, unsigned 
     set_candidate_single_value(n, i, j);
 }
 
-int only_one_possible_value_in_cell(unsigned short int i, unsigned short int j) {
-    unsigned short int possible_value = 0;
+int only_one_candidate_in_cell(unsigned short int i, unsigned short int j) {
+    unsigned short int candidate = 0;
     for (size_t n_ = 0; n_ < 9; n_++)
     {
-        if (possible_value == 0)
+        if (candidate == 0)
         {
-            possible_value = candidates[i][j].values[n_];
+            candidate = candidates[i][j].values[n_];
         }
         else if (candidates[i][j].values[n_] != 0)
         {
             return 0;
         }
     }
-    return possible_value;
+    return candidate;
 }
 
 void check_hidden_singles() {
@@ -227,9 +227,9 @@ int is_not_fully_solved(unsigned short int final_board[9][9]) {
     return 1;
 }
 
-#define PV(x,y,n) ('0' + (possible_values[x][y].values[n]))
+#define PV(x,y,n) ('0' + (candidates[x][y].values[n]))
 
-void print_possible_values_table() {
+void print_candidates_table() {
     printf("┏━━━━━┯━━━━━┯━━━━━┳━━━━━┯━━━━━┯━━━━━┳━━━━━┯━━━━━┯━━━━━┓\n");
     printf("┃ %c%c%c ┊ %c%c%c ┊ %c%c%c ┃ %c%c%c ┊ %c%c%c ┊ %c%c%c ┃ %c%c%c ┊ %c%c%c ┊ %c%c%c ┃\n", PV(0,0,0) == '0' ? ' ' : PV(0,0,0), PV(0,0,1) == '0' ? ' ' : PV(0,0,1), PV(0,0,2) == '0' ? ' ' : PV(0,0,2), PV(0,1,0) == '0' ? ' ' : PV(0,1,0), PV(0,1,1) == '0' ? ' ' : PV(0,1,1), PV(0,1,2) == '0' ? ' ' : PV(0,1,2), PV(0,2,0) == '0' ? ' ' : PV(0,2,0), PV(0,2,1) == '0' ? ' ' : PV(0,2,1), PV(0,2,2) == '0' ? ' ' : PV(0,2,2), PV(0,3,0) == '0' ? ' ' : PV(0,3,0), PV(0,3,1) == '0' ? ' ' : PV(0,3,1), PV(0,3,2) == '0' ? ' ' : PV(0,3,2), PV(0,4,0) == '0' ? ' ' : PV(0,4,0), PV(0,4,1) == '0' ? ' ' : PV(0,4,1), PV(0,4,2) == '0' ? ' ' : PV(0,4,2), PV(0,5,0) == '0' ? ' ' : PV(0,5,0), PV(0,5,1) == '0' ? ' ' : PV(0,5,1), PV(0,5,2) == '0' ? ' ' : PV(0,5,2), PV(0,6,0) == '0' ? ' ' : PV(0,6,0), PV(0,6,1) == '0' ? ' ' : PV(0,6,1), PV(0,6,2) == '0' ? ' ' : PV(0,6,2), PV(0,7,0) == '0' ? ' ' : PV(0,7,0), PV(0,7,1) == '0' ? ' ' : PV(0,7,1), PV(0,7,2) == '0' ? ' ' : PV(0,7,2), PV(0,8,0) == '0' ? ' ' : PV(0,8,0), PV(0,8,1) == '0' ? ' ' : PV(0,8,1), PV(0,8,2) == '0' ? ' ' : PV(0,8,2));
     printf("┃ %c%c%c ┊ %c%c%c ┊ %c%c%c ┃ %c%c%c ┊ %c%c%c ┊ %c%c%c ┃ %c%c%c ┊ %c%c%c ┊ %c%c%c ┃\n", PV(0,0,3) == '0' ? ' ' : PV(0,0,3), PV(0,0,4) == '0' ? ' ' : PV(0,0,4), PV(0,0,5) == '0' ? ' ' : PV(0,0,5), PV(0,1,3) == '0' ? ' ' : PV(0,1,3), PV(0,1,4) == '0' ? ' ' : PV(0,1,4), PV(0,1,5) == '0' ? ' ' : PV(0,1,5), PV(0,2,3) == '0' ? ' ' : PV(0,2,3), PV(0,2,4) == '0' ? ' ' : PV(0,2,4), PV(0,2,5) == '0' ? ' ' : PV(0,2,5), PV(0,3,3) == '0' ? ' ' : PV(0,3,3), PV(0,3,4) == '0' ? ' ' : PV(0,3,4), PV(0,3,5) == '0' ? ' ' : PV(0,3,5), PV(0,4,3) == '0' ? ' ' : PV(0,4,3), PV(0,4,4) == '0' ? ' ' : PV(0,4,4), PV(0,4,5) == '0' ? ' ' : PV(0,4,5), PV(0,5,3) == '0' ? ' ' : PV(0,5,3), PV(0,5,4) == '0' ? ' ' : PV(0,5,4), PV(0,5,5) == '0' ? ' ' : PV(0,5,5), PV(0,6,3) == '0' ? ' ' : PV(0,6,3), PV(0,6,4) == '0' ? ' ' : PV(0,6,4), PV(0,6,5) == '0' ? ' ' : PV(0,6,5), PV(0,7,3) == '0' ? ' ' : PV(0,7,3), PV(0,7,4) == '0' ? ' ' : PV(0,7,4), PV(0,7,5) == '0' ? ' ' : PV(0,7,5), PV(0,8,3) == '0' ? ' ' : PV(0,8,3), PV(0,8,4) == '0' ? ' ' : PV(0,8,4), PV(0,8,5) == '0' ? ' ' : PV(0,8,5));
@@ -298,12 +298,12 @@ void solve_sudoku(unsigned short int input[9][9], unsigned short int output[9][9
         {
             for (size_t j = 0; j < 9; j++)
             {
-                unsigned short int only_possible_value = only_one_possible_value_in_cell(i, j);
+                unsigned short int only_candidate = only_one_candidate_in_cell(i, j);
 
-                if (input[i][j] == 0 && only_possible_value != 0)
+                if (input[i][j] == 0 && only_candidate != 0)
                 {
-                    output[i][j] = only_possible_value;
-                    handle_number_in_cell(only_possible_value, i, j);
+                    output[i][j] = only_candidate;
+                    handle_number_in_cell(only_candidate, i, j);
                 }
             }
         }
@@ -312,6 +312,6 @@ void solve_sudoku(unsigned short int input[9][9], unsigned short int output[9][9
 
     if(is_not_fully_solved(output) == 0) {
         printf("Sudoku not solved. Possible values so far:\n");
-        print_possible_values_table();
+        print_candidates_table();
     }
 }
