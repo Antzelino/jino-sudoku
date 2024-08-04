@@ -12,9 +12,10 @@ Tasks:
 [ ] Cover with `#if DEBUG` relevant pieces of code, such as loops with assertions
 [ ] Implement hidden candidates, that checks hidden singles, pairs, triplets, etc.
 [ ] Implement naked candidates, that checks naked singles, pairs, triplets, etc.
-[>] Add testing with example sudokus and known solution that can run via makefile
 [ ] Implement improved algorithm
 [ ] CUnit Testing Framework for tests
+[ ] Change Notes.values array into a single bitmask, one bit for each of 9 possible values (so 16-bit bitmask and we use 9 of those)
+[>] Add testing with example sudokus and known solution that can run via makefile
 [-] Have a way to understand why a board wouldn't be solved after a run of the algorithm (print to some log file or something to see results or debug the run etc.)
 [x] Use other ascii characters to print sudoku borders between the numbers
 [x] Print border with bold typeface around the 9-squares
