@@ -1,4 +1,4 @@
-In this repository I'm trying to implement a Sudoku solver in C, and potentially be able to play as well.
+In this repository I'm trying to implement a Sudoku solver in C, which solves the Sudoku the same way a human would (potentially, will be able to play as well).
 
 For now it's only in the terminal and it works in Linux only, but maybe that will change some time in the future.
 
@@ -14,3 +14,7 @@ make run
 # Delete executable and object files
 make clean
 ```
+
+# Useful Resources
+
+- Learn Sudoku: https://www.learn-sudoku.com/
